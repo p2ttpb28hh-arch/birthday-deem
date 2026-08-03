@@ -5,24 +5,25 @@ const music = document.getElementById("music");
 
 intro.addEventListener("click", async () => {
 
+    // إخفاء شاشة البداية
     intro.style.opacity = "0";
 
+    setTimeout(() => {
+        intro.style.display = "none";
+        scene.style.opacity = "1";
+    }, 500);
+
+    // تشغيل الموسيقى
     try {
         music.volume = 0.7;
         await music.play();
-    } catch (e) {
-        console.log(e);
+    } catch (err) {
+        console.log("Music couldn't play:", err);
     }
 
+    // فتح الظرف
     setTimeout(() => {
-
-        intro.style.display = "none";
-        scene.style.opacity = "1";
-
-        setTimeout(() => {
-            envelope.classList.add("open");
-        }, 500);
-
-    }, 500);
+        envelope.classList.add("open");
+    }, 900);
 
 });
